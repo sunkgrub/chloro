@@ -1,8 +1,8 @@
 import random as rd
 import pandas as pd
 
-chlorodf = pd.read_csv('funny.csv')
-flowernames = chlorodf['name'].tolist()
+chlorodf = pd.read_csv('funny.csv', index_col='name')
+flowernames = chlorodf.index.tolist()
 
 class plant():
     def __init__(self, name, age):
@@ -10,12 +10,13 @@ class plant():
         self.age    = age
         self.health = 100 - self.age**2
         self.series = chlorodf.loc[name]
-        self.thirst = None
-        self.maxage = None
-        self.price  = None
+        self.thirst = self.series['thirst']
+        self.maxage = self.series['maxage']
+        self.price  = self.series['price']
+        self.water = 50
     
     def __str__(self):
-        return f'name : {self.name}/nage : {self.age}/nhealth : {self.health}/nthirst : {self.thirst}/nmaxage : {self.maxage}/nprice : {self.prive}'
+        return f"name : {self.name}\nage : {self.age}\nhealth : {self.health}\nthirst : {self.thirst}\nmaxage : {self.maxage}\nprice : {self.price}"
     
     def progress(self):
         self.age += 1
@@ -23,5 +24,11 @@ class plant():
 
 Shelf = []
 
-p1 = plant('Rose', 1)
-print(p1)
+for i in range(10):
+    name = rd.choice(flowernames)
+    age = rd.randint(0, 10)
+    Shelf.append(plant(name, age))
+
+for i in Shelf:
+    print(i)
+    print()
