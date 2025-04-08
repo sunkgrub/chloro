@@ -1,0 +1,5 @@
+name,maxage,thirst,chloroRate,price
+Tulip,10:3,0.5,1,10
+Rose,20:5,0.2,5,20
+Daisy,30:7,0.1,2,30
+Lily,40:9,0.05,1,40
