@@ -11,7 +11,9 @@ class plant():
         self.health = 100 - self.age**2
         self.series = chlorodf.loc[name]
         self.thirst = self.series['thirst']
-        self.maxage = self.series['maxage']
+        mean = int(str(self.series['maxage']).split(':')[0])
+        deav = int(str(self.series['maxage']).split(':')[1])
+        self.maxage = rd.randint(mean - deav, mean + deav)
         self.price  = self.series['price']
         self.water = 50
     
