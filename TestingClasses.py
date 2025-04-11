@@ -24,7 +24,25 @@ class plant():
         self.age += 1
         self.health = 100 - self.age**2
 
+class logicManager():
+    def __init__(self):
+        self.purchasedPlants = {}
+        self.createPurchaseHistory(flowernames)
+    def update(self):
+        pass
+    def createPurchaseHistory(self, flowernames):
+        for i in flowernames:
+            self.purchasedPlants[i] = 0
+            
+logicManager1 = logicManager()            
+
+logicManager1.createPurchaseHistory(flowernames)
+purchasedPlants = logicManager1.purchasedPlants
+
+print(purchasedPlants)
+
 Shelf = []
+
 
 for i in range(10):
     name = rd.choice(flowernames)
