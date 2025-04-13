@@ -34,21 +34,33 @@ class logicManager():
         for i in flowernames:
             self.purchasedPlants[i] = 0
             
+
+class shelf():
+    def __init__(self, sizeClass, maxNumPlants):
+        self.maxNumPlants = maxNumPlants
+        self.sizeClass = sizeClass
+        self.plants = []
+    def __str__(self):
+        output = f'Size Class: {self.sizeClass}\nMax Plants: {self.maxNumPlants}'
+        output2 = ' /'
+        for p in range(self.maxNumPlants): output2 += ' ' + \
+            (self.plants[p].name if p < len(self.plants) else '_____') + ' '
+        output += '\n  ' +('_' * (len(output2) - 2))+ '\n' + output2 + '\\ \n|' + ('_' * len(output2)) + '|'
+        return output
+
 logicManager1 = logicManager()            
 
 logicManager1.createPurchaseHistory(flowernames)
 purchasedPlants = logicManager1.purchasedPlants
 
-print(purchasedPlants)
+Shelf = shelf('small', 9)
 
-Shelf = []
-
-
-for i in range(10):
+for i in range(0):
     name = rd.choice(flowernames)
     age = rd.randint(0, 10)
-    Shelf.append(plant(name, age))
+    Shelf.plants.append(plant(name, age))
+    purchasedPlants[name] += 1
 
-for i in Shelf:
-    print(i)
-    print()
+
+print(logicManager1.purchasedPlants)
+print(Shelf)
